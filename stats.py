@@ -13,13 +13,27 @@ def get_number_of_chars(full_text):
         counter[char] = counter.get(char, 0) + 1
     return counter
 
+def get_chars_dict(full_text: str) -> dict[str, int]:
+    counter = {}
+    lower_text = full_text.lower()
+    for char in lower_text:
+        counter[char] = counter.get(char, 0) + 1
+    return counter
+
+def chars_dict_to_sorted_list(all_chars):
+    sorted_list = []
+    for chars in all_chars:
+        sorted_list.append((chars, all_chars[chars]))
+    return sorted(sorted_list, reverse=True, key=sort_on)
+
+"""
 def sorted_char_num_list(all_chars):
     sorted_list = []
     for chars in all_chars:
         sorted_list.append({"char": chars, "num" :all_chars[chars]})
     sorted_list.sort(reverse=True, key=sort_on)
     return sorted_list
+"""
 
 def sort_on(items):
-    return items["num"]
-
+    return items[1]
